@@ -1,4 +1,4 @@
-package com.bfxy.disruptor.heigh.chain;
+package org.saymeevetime.disruptor.heigh.chain;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -8,7 +8,6 @@ import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.EventFactory;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
-import com.lmax.disruptor.dsl.EventHandlerGroup;
 import com.lmax.disruptor.dsl.ProducerType;
 
 public class Main {
@@ -22,11 +21,7 @@ public class Main {
 		ExecutorService es2 = Executors.newFixedThreadPool(5);
 		//1 构建Disruptor
 		Disruptor<Trade> disruptor = new Disruptor<Trade>(
-				new EventFactory<Trade>() {
-					public Trade newInstance() {
-						return new Trade();
-					}
-				},
+                () -> new Trade(),
 				1024*1024,
 				es2,
 				ProducerType.SINGLE,
@@ -46,9 +41,9 @@ public class Main {
 		//2.2 并行操作: 可以有两种方式去进行
 		//1 handleEventsWith方法 添加多个handler实现即可
 		//2 handleEventsWith方法 分别进行调用
-//		disruptor.handleEventsWith(new Handler1(), new Handler2(), new Handler3());
-//		disruptor.handleEventsWith(new Handler2());
-//		disruptor.handleEventsWith(new Handler3());
+		disruptor.handleEventsWith(new Handler1(), new Handler2(), new Handler3());
+		disruptor.handleEventsWith(new Handler2());
+		disruptor.handleEventsWith(new Handler3());
 
 		
 		//2.3 菱形操作 (一)

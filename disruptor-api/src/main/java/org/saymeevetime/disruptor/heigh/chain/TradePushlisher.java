@@ -1,4 +1,4 @@
-package com.bfxy.disruptor.heigh.chain;
+package org.saymeevetime.disruptor.heigh.chain;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
