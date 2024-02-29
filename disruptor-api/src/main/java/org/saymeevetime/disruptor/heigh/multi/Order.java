@@ -1,6 +1,4 @@
-package com.bfxy.disruptor.heigh.multi;
-
-import java.util.concurrent.atomic.AtomicInteger;
+package org.saymeevetime.disruptor.heigh.multi;
 
 /**
  * Disruptor中的 Event

@@ -1,9 +1,9 @@
-package com.bfxy.disruptor.heigh.multi;
+package org.saymeevetime.disruptor.heigh.multi;
+
+import com.lmax.disruptor.WorkHandler;
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import com.lmax.disruptor.WorkHandler;
 
 public class Consumer implements WorkHandler<Order> {
 

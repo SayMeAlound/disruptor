@@ -1,16 +1,11 @@
-package com.bfxy.disruptor.heigh.multi;
+package org.saymeevetime.disruptor.heigh.multi;
+
+import com.lmax.disruptor.*;
+import com.lmax.disruptor.dsl.ProducerType;
 
 import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
-
-import com.lmax.disruptor.EventFactory;
-import com.lmax.disruptor.ExceptionHandler;
-import com.lmax.disruptor.RingBuffer;
-import com.lmax.disruptor.SequenceBarrier;
-import com.lmax.disruptor.WorkerPool;
-import com.lmax.disruptor.YieldingWaitStrategy;
-import com.lmax.disruptor.dsl.ProducerType;
 
 public class Main {
 
