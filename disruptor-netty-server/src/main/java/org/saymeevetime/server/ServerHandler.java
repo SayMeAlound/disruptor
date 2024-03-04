@@ -3,12 +3,15 @@ package org.saymeevetime.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import org.saymeevetime.disruptor.MessageProducer;
+import org.saymeevetime.disruptor.RingBufferWorkerPoolFactory;
 import org.saymeevetime.entity.TranslatorData;
 
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    	/*
     	TranslatorData request = (TranslatorData)msg;
     	System.err.println("Sever端: id= " + request.getId() 
     					+ ", name= " + request.getName() 
@@ -20,11 +23,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     	response.setMessage("resp: " + request.getMessage());
     	//写出response响应信息:
     	ctx.writeAndFlush(response);
-//    	TranslatorData request = (TranslatorData)msg;
-//    	//自已的应用服务应该有一个ID生成规则
-//    	String producerId = "code:sessionId:001";
-//    	MessageProducer messageProducer = RingBufferWorkerPoolFactory.getInstance().getMessageProducer(producerId);
-//    	messageProducer.onData(request, ctx);
+    	*/
+    	TranslatorData request = (TranslatorData)msg;
+    	//自已的应用服务应该有一个ID生成规则
+    	String producerId = "code:sessionId:001";
+    	MessageProducer messageProducer = RingBufferWorkerPoolFactory.getInstance().getMessageProducer(producerId);
+    	messageProducer.onData(request, ctx);
     	
     	
     }

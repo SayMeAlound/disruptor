@@ -22,7 +22,7 @@ public class DisruptorNettyServerApplication {
         }
         RingBufferWorkerPoolFactory.getInstance().initAndStart(ProducerType.MULTI,
                 1024*1024,
-                //new YieldingWaitStrategy(),
+                //new YieldingWaitStrategy(),   最占内存  消耗CPU 最高性能策略
                 new BlockingWaitStrategy(),
                 conusmers);
 
